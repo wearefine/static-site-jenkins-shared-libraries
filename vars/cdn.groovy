@@ -101,10 +101,11 @@ def call(body) {
             }
             throw e
           }
-        } // withRegistry
-      } // timestamps
+        } // dockerImage
+      } // withRegistry
     if (env.DEBUG == 'false') {
       notifySlack(env.SLACK_CHANNEL)
     }
+    } // timestamps
   } // node
 }
