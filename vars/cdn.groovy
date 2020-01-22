@@ -61,6 +61,8 @@ def call(body) {
 
       docker.withRegistry(config.DOCKER_REGISTRY_URL, "ecr:${env.AWS_DEFAULT_REGION}:${config.DOCKER_REGISTRY_CREDS_ID}") {
 
+        config.DOCKER_REGISTRY = config.DOCKER_REGISTRY_URL.split('https://')[1]
+
         docker.image("${config.DOCKER_REGISTRY}:${config.NODE_MAJOR_VERSION}-dev").inside() {
           try {
             stage('Install Dependencies'){
