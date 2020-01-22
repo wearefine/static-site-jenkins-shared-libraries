@@ -82,6 +82,23 @@ def call(body) {
           }
 
           try {
+            stage('Build'){
+              milestone label: 'Build'
+
+              retry(2) {
+                sh 'yarn build'
+              }
+
+              currentBuild.result = 'SUCCESS'
+
+            }
+          } catch(Exception e) {
+            currentBuild.result = 'FAILURE'
+            notifySlack(env.SLACK_CHANNEL)
+            throw e
+          }
+
+          try {
             stage('Deploy'){
               milestone label: 'Deploy'
 
