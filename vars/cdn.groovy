@@ -87,11 +87,11 @@ def call(body) {
 
               withAWS(credentials: config.AWS_CREDS_ID, region: config.AWS_DEFAULT_REGION) {
                 if (env.BRANCH_NAME == 'master') {
-                  s3Upload(file: 'dist', bucket: env.PROD_BUCKET, path: "custom/")
-                  cfInvalidate(distribution: env.DISTRIBUTION, paths:['/custom/*'])
+                  s3Upload(file: 'dist', bucket: config.PROD_BUCKET, path: "custom/")
+                  cfInvalidate(distribution: config.DISTRIBUTION, paths:['/custom/*'])
                 }
                 else if (env.BRANCH_NAME == 'dev') {
-                  s3Upload(file: 'dist', bucket: env.DEV_BUCKET, path: "/custom/")
+                  s3Upload(file: 'dist', bucket: config.DEV_BUCKET, path: "/custom/")
                 }
               }
             }
