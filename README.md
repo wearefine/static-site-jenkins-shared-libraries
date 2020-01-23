@@ -35,7 +35,7 @@ When the job runs the first time you will need to work through allowing certain 
 ## Jenkinsfile
 
 ``` groovy
-static {
+cdn {
   NODE_INSTALL_NAME = 'lts/boron'
   SLACK_CHANNEL = '#deploys'
   DEBUG = 'false'
