@@ -4,6 +4,8 @@ import hudson.tasks.test.AbstractTestResultAction;
 def call(String channel){
   def String color
 
+  sh 'echo -e "Check if function"'
+
   if(currentBuild.result == null) {
     if(currentBuild.id == '1'){
       color = 'blue'
